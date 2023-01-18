@@ -15,24 +15,29 @@ class UserService(private val userRepository: UserRepository) {
     fun getUserById(id: Long): UserDto? {
         val userEntity: UserEntity? = userRepository.getByUserId(id)
 
-        val userDto: UserDto = userEntity?.let{
-            return UserMapper.INSTANCE.toDto(it)
+        lateinit var userDto: UserDto
+
+        userEntity?.let{
+            userDto = UserMapper.INSTANCE.toDto(it)
         } ?:run {
             log.info { "UserEntity is null" }
             return null
         }
 
+        log.info("UserDto: $userDto")
         return userDto
     }
 
     fun addUser(userDto: UserDto): UserDto? {
         val userEntity: UserEntity = UserMapper.INSTANCE.toEntity(userDto)
-        val savedUserEntity: UserEntity = userRepository.save(userEntity)
-        val savedUserDto: UserDto = UserMapper.INSTANCE.toDto(savedUserEntity)
+        val savedUserEntity: UserEntity? = userRepository.save(userEntity)
 
-        log.info("userEntity: {}", userEntity.toString())
-        log.info("savedUserEntity: {}", savedUserEntity.toString())
-        log.info("savedUserDto: {}", savedUserDto.toString())
+        val savedUserDto: UserDto = savedUserEntity?.let{
+            return UserMapper.INSTANCE.toDto(it)
+        } ?:run {
+            log.info { "UserEntity is null" }
+            return null
+        }
 
         return savedUserDto
     }

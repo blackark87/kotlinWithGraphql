@@ -5,10 +5,10 @@ plugins {
     id("io.spring.dependency-management") version "1.1.0"
     id("org.graalvm.buildtools.native") version "0.9.18"
     id("org.asciidoctor.convert") version "2.4.0"
-    kotlin("jvm") version "1.7.22"
-    kotlin("plugin.spring") version "1.7.22"
-    kotlin("plugin.jpa") version "1.7.22"
-    kotlin("kapt") version "1.7.22"
+    kotlin("jvm") version "1.8.0"
+    kotlin("plugin.spring") version "1.8.0"
+    kotlin("plugin.jpa") version "1.8.0"
+    kotlin("kapt") version "1.8.0"
 }
 
 group = "org.study"
@@ -48,26 +48,42 @@ dependencies {
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.springframework.graphql:spring-graphql-test")
     testImplementation("org.springframework.restdocs:spring-restdocs-webtestclient")
+
+
     // https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.7.22")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.0")
+
     // https://mvnrepository.com/artifact/com.google.devtools.ksp/symbol-processing-api
     runtimeOnly("com.google.devtools.ksp:symbol-processing-api:1.8.0-1.0.8")
+
     // https://mvnrepository.com/artifact/io.github.microutils/kotlin-logging
     implementation("io.github.microutils:kotlin-logging:3.0.4")
+
     // https://mvnrepository.com/artifact/com.graphql-java/graphql-java-extended-scalars
     implementation("com.graphql-java:graphql-java-extended-scalars:20.0")
+
     // https://mvnrepository.com/artifact/com.graphql-java/graphql-java-extended-validation
     implementation("com.graphql-java:graphql-java-extended-validation:20.0")
+
     // https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor
     kapt("org.mapstruct:mapstruct-processor:1.5.3.Final")
+
     // https://mvnrepository.com/artifact/org.mapstruct/mapstruct
     implementation("org.mapstruct:mapstruct:1.5.3.Final")
+
     // https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-noarg
     implementation("org.jetbrains.kotlin:kotlin-noarg:1.8.0")
+
     // https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-allopen
     implementation("org.jetbrains.kotlin:kotlin-allopen:1.8.0")
+
     // https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core
     implementation("org.hibernate.orm:hibernate-core:6.1.6.Final")
+
+    // https://mvnrepository.com/artifact/org.json/json
+    implementation("org.json:json:20220924")
+
+
 
 }
 

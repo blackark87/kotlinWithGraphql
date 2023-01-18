@@ -1,9 +1,7 @@
 package org.study.kotlinwithgraphql.domain.user.entity
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
-import jakarta.persistence.Table
+import jakarta.persistence.*
+import org.study.kotlinwithgraphql.domain.account.entity.AccountEntity
 import java.time.LocalDate
 
 @Entity
@@ -22,5 +20,9 @@ class UserEntity {
 
     @Column(name = "AGE")
     var age: Int? = null
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ID")
+    var accounts: List<AccountEntity>? = null
 
 }

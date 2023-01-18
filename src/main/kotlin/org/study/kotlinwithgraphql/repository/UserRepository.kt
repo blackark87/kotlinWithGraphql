@@ -8,4 +8,5 @@ import org.study.kotlinwithgraphql.domain.user.entity.UserEntity
 interface UserRepository: JpaRepository<UserEntity, Long> {
 
     fun getByUserId(id: Long): UserEntity?
+    fun save(userEntity: UserEntity): UserEntity?
 }

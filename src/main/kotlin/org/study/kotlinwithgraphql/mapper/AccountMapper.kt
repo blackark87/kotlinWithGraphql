@@ -7,7 +7,6 @@ import org.study.kotlinwithgraphql.domain.account.entity.AccountEntity
 
 @Mapper
 interface AccountMapper: BaseMapper<AccountDto, AccountEntity> {
-
     companion object {
         val instance: AccountMapper = Mappers.getMapper(AccountMapper::class.java)
     }

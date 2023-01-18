@@ -7,6 +7,7 @@ import jakarta.persistence.*
 class AccountEntity {
 
     @Id
+    @Column(name = "row_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "BANK_ACCOUNT_SEQ")
     @SequenceGenerator(name = "BANK_ACCOUNT_SEQ", sequenceName = "BANK_ACCOUNT_SEQ", allocationSize = 1)
     val rowId: Long? = null

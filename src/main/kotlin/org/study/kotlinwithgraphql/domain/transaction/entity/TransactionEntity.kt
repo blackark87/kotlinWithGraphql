@@ -8,6 +8,7 @@ import java.time.LocalDate
 class TransactionEntity {
 
     @Id
+    @Column(name = "row_id", nullable = false)
     @GeneratedValue(generator = "BANK_TRANSACTION_SEQ", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "BANK_TRANSACTION_SEQ", sequenceName = "BANK_TRANSACTION_SEQ", allocationSize = 1)
     val rowId: Long? = null
