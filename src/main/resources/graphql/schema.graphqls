@@ -1,0 +1,30 @@
+type Query {
+    getUserById(id: ID): User
+    getAccountsByUserId(userId: ID): [Account]
+}
+
+type Mutation {
+    addUser(user: UserInput): User
+}
+
+type Account {
+    userId: Long
+    accountNo: String
+}
+
+type User {
+    id: ID,
+    name: String,
+    age: Int,
+    registeredAt: Date
+    account: [Account]
+}
+
+input UserInput {
+    id: ID,
+    name: String,
+    age: Int,
+}
+
+scalar Date
+scalar Long

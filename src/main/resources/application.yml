@@ -1,0 +1,49 @@
+server:
+  error:
+    whitelabel:
+      enabled: false
+  port: 11234
+
+
+
+spring:
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+  profiles:
+    include: console-logging, file-logging, session-logging, error-logging
+
+  graphql:
+    graphiql:
+      enabled: true
+      path: /graphiql
+    cors:
+      allowed-origins: '*'
+    path: /graphql
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test;db_close_delay=-1;db_close_on_exit=false;mode=LEGACY
+    username: sa
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    show-sql: false
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    root: INFO
