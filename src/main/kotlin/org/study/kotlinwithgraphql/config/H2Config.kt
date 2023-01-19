@@ -1,3 +1,4 @@
+/*
 package org.study.kotlinwithgraphql.config
 
 import org.springframework.boot.context.properties.ConfigurationProperties
@@ -30,3 +31,4 @@ class H2Config(private val dataSourceHikari: DataSource) {
     }
 
 }
+*/

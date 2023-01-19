@@ -4,8 +4,6 @@ server:
       enabled: false
   port: 11234
 
-
-
 spring:
   devtools:
     restart:
@@ -23,36 +21,47 @@ spring:
       allowed-origins: '*'
     path: /graphql
 
-  datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:test;db_close_delay=-1;db_close_on_exit=false;mode=LEGACY
-    username: sa
+#  datasource:
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:mem:test;db_close_delay=-1;db_close_on_exit=false;mode=LEGACY
+#    username: sa
 
   h2:
     console:
       enabled: true
       path: /h2-console
 
-  jpa:
-    show-sql: true
-    database-platform: org.hibernate.dialect.H2Dialect
-    hibernate:
-      ddl-auto: update
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
-    properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
-      jakarta:
-        cache:
-          missing_cache_strategy: CREATE
-        persistence:
-          sharedCache:
-            mode: ENABLE_SELECTIVE
-    open-in-view: false
+#  jpa:
+#    show-sql: true
+#    database-platform: org.hibernate.dialect.H2Dialect
+#    hibernate:
+#      ddl-auto: update
+#      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+#    properties:
+#      hibernate:
+#        show_sql: true
+#        format_sql: true
+#      jakarta:
+#        cache:
+#          missing_cache_strategy: CREATE
+#        persistence:
+#          sharedCache:
+#            mode: ENABLE_SELECTIVE
+#    open-in-view: false
 
+  data:
+    r2dbc:
+      repositories:
+        enabled: true
+
+  r2dbc:
+    url: r2dbc:h2:mem:///test?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    pool:
+      enabled: false
+      initial-size: 10
 logging:
   config: classpath:logback-spring.xml
   level:
-    root: DEBUG
+    root: INFO

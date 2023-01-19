@@ -1,28 +1,20 @@
 package org.study.kotlinwithgraphql.domain.user.entity
 
-import jakarta.persistence.*
-import org.study.kotlinwithgraphql.domain.account.entity.AccountEntity
+import org.springframework.data.annotation.Id
+import org.springframework.data.relational.core.mapping.Column
+import org.springframework.data.relational.core.mapping.Table
 import java.time.LocalDate
 
-@Entity
 @Table(name = "BANK_USER")
 class UserEntity {
 
     @Id
-    @Column(name = "ID", nullable = false)
+    @Column("id")
     var userId: Long? = null
-
-    @Column(name = "NAME", length = 50)
+    @Column("name")
     var name: String? = null
-
-    @Column(name = "REG_DATE")
+    @Column("reg_date")
     var registeredAt: LocalDate? = LocalDate.now()
-
-    @Column(name = "AGE")
+    @Column("age")
     var age: Int? = null
-
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ID")
-    var accounts: List<AccountEntity>? = null
-
 }

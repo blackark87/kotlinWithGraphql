@@ -14,11 +14,10 @@ interface UserMapper: BaseMapper<UserDto, UserEntity> {
     }
 
     @Mapping(source = "userId", target = "id")
-    @Mapping(source = "accounts", target = "account")
+    @Mapping(target = "account", ignore = true)
     override fun toDto(entity: UserEntity): UserDto
 
     @Mapping(source = "id", target = "userId")
     @Mapping(source = "registeredAt", target = "registeredAt", defaultExpression = "java(java.time.LocalDate.now())")
-    @Mapping(source = "account", target="accounts", ignore = true)
     override fun toEntity(dto: UserDto): UserEntity
 }
